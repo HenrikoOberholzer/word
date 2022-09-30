@@ -39,10 +39,6 @@ public class AnagramService {
 
         //Checking in all the letters match.
         return Arrays.equals(lettersOfWord, lettersOfPossibleAnagram);
-
-        // TODO: Check if it is a word?
-
-        //
     }
 
     private boolean notAnagram(String currentWord, String possibleAnagram) {
@@ -52,7 +48,6 @@ public class AnagramService {
         }
 
         //Test for numbers
-//        Pattern numbersPattern = Pattern.compile("[^0-9]");
         String numbers = "0123456789";
         char[] numbersArray = numbers.toCharArray();
         List<String> lettersWordArray = new ArrayList<>();
@@ -63,10 +58,6 @@ public class AnagramService {
             return true;
         }
 
-//        if (charMatchPattern(numbersPattern, currentWordArray)) {
-//            return true;
-//        }
-
         char[] possibleAnagramArray = possibleAnagram.toCharArray();
 
         List<String> lettersPossibleAnagramArray = new ArrayList<>();
@@ -75,11 +66,6 @@ public class AnagramService {
         if (checkValueInArray(lettersPossibleAnagramArray, numbersArray)) {
             return true;
         }
-
-//        if (charMatchPattern(numbersPattern, possibleAnagramArray)) {
-//            return true;
-//        }
-        //
 
         //Test for symbols
         Pattern symbolPattern = Pattern.compile("[-+.^:,!@#%$^&*()_={};<>?/]");
