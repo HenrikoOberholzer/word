@@ -1,0 +1,399 @@
+{
+	"info": {
+		"_postman_id": "f3be7e81-1022-4ee8-a3a8-6edbe471b2ac",
+		"name": "Anagram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Anagram Both values Null",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"\",\n    \"possibleAnagram\" : \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram first value null",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"\",\n    \"possibleAnagram\" : \"no\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram second value null",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"\",\n    \"possibleAnagram\" : \"no\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram length mismatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"longer\",\n    \"possibleAnagram\" : \"no\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram both contain numbers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"no5\",\n    \"possibleAnagram\" : \"on5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram first contain numbers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"no5\",\n    \"possibleAnagram\" : \"on\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram second contain numbers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"no\",\n    \"possibleAnagram\" : \"on4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram both contain symbols",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"no\",\n    \"possibleAnagram\" : \"on4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram first contain symbols",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"no^\",\n    \"possibleAnagram\" : \"on\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram second contain symbols",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"no\",\n    \"possibleAnagram\" : \"on&\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect false"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram order different",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"haha\",\n    \"possibleAnagram\" : \"ahah\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect true"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram spaces",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"debitcard\",\n    \"possibleAnagram\" : \"bad credit\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect true"
+			},
+			"response": []
+		},
+		{
+			"name": "Anagram case",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentWord\" : \"Dictionary\",\n    \"possibleAnagram\" : \"indicatory\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/anagram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"anagram"
+					]
+				},
+				"description": "Expect true"
+			},
+			"response": []
+		}
+	]
+}
