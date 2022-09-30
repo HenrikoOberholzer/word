@@ -21,13 +21,18 @@ public class MainController {
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("result", "false");
-        return "home";
+        model.addAttribute("currentWord", "");
+        model.addAttribute("possibleAnagram", "");
+
+        return "main";
     }
 
     @RequestMapping(value = "/", method=RequestMethod.POST)
     public String save(Model model, @RequestParam String currentWord, @RequestParam String possibleAnagram) {
         model.addAttribute("result", anagramService.areAnagram(currentWord, possibleAnagram));
+        model.addAttribute("currentWord", currentWord);
+        model.addAttribute("possibleAnagram", possibleAnagram);
 
-        return "home";
+        return "main";
     }
 }
