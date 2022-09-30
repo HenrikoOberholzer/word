@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Anagram</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="background:lightblue;">
+
+<div class="container" style="background:lightsalmon;">
+    <h1>Welcome to Anagram</h1>
+
+    <form action="/" method="POST">
+        <label type="text">Current word:</label><br>
+        <input type="text" name="currentWord" size="50" placeholder="Enter current word or phrase"><br><br>
+
+        <label type="text">Possible anagram:</label><br>
+        <input type="text" size="50" name="possibleAnagram" placeholder="Enter possible anagram"><br><br>
+
+        <button type="submit" class="btn btn-large btn-success">Submit</button>
+
+    </form>
+
+    <p>Is <span th:text="${currentWord}"></span> and <span th:text="${possibleAnagram}"></span> anagram? <span th:text="${result}"></span> </p>
+</div>
+
+</body>
+</html>
