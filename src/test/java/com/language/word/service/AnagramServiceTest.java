@@ -37,8 +37,66 @@ class AnagramServiceTest {
     }
 
     @Test
+    void areAnagramBothNumbersFoundShouldBeFalse() {
+        boolean response = anagramService.areAnagram("2no", "2on");
+        assertFalse(response);
+    }
+
+    @Test
+    void areAnagramFirstNumberFoundShouldBeFalse() {
+        boolean response = anagramService.areAnagram("2no", "on");
+        assertFalse(response);
+    }
+
+    @Test
+    void areAnagramSecondNumberFoundShouldBeFalse() {
+        boolean response = anagramService.areAnagram("no", "o2n");
+        assertFalse(response);
+    }
+
+    //
+    @Test
+    void areAnagramBothSymbolsFoundShouldBeFalse() {
+        boolean response = anagramService.areAnagram("$no", "$on");
+        assertFalse(response);
+    }
+
+    @Test
+    void areAnagramFirstSymbolFoundShouldBeFalse() {
+        boolean response = anagramService.areAnagram("*no", "on");
+        assertFalse(response);
+    }
+
+    @Test
+    void areAnagramSecondSymbolFoundShouldBeFalse() {
+        boolean response = anagramService.areAnagram("no", "on)");
+        assertFalse(response);
+    }
+
+
+
+    //
+    @Test
     void areAnagramShouldBeTrue() {
         boolean response = anagramService.areAnagram("Mother in law", "Hitler woman");
-        assertFalse(response);
+        assertTrue(response);
+    }
+
+    @Test
+    void areAnagramShortShouldBeTrue() {
+        boolean response = anagramService.areAnagram("haha", "ahah");
+        assertTrue(response);
+    }
+
+    @Test
+    void areAnagramSpacesShouldBeTrue() {
+        boolean response = anagramService.areAnagram("debitcard", "bad credit");
+        assertTrue(response);
+    }
+
+    @Test
+    void areAnagramCaseShouldBeTrue() {
+        boolean response = anagramService.areAnagram("indicatory", "Dictionary");
+        assertTrue(response);
     }
 }
