@@ -3,9 +3,7 @@ package com.language.word.service;
 import com.google.common.base.Strings;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +14,7 @@ import java.util.regex.Pattern;
 public class AnagramService {
 
     public boolean areAnagram(String currentWord, String possibleAnagram) {
+        //Basic sanity checks
         if (sanityCheck(currentWord, possibleAnagram)) {
             return false;
         }
@@ -24,9 +23,34 @@ public class AnagramService {
         currentWord = currentWord.replaceAll(" ", "");
         possibleAnagram = possibleAnagram.replaceAll(" ", "");
 
-        if (notAnagram(currentWord, possibleAnagram)) {
+        //If length does not match there are no way this is a anagram.
+        if(currentWord.length() != possibleAnagram.length()) {
             return false;
         }
+
+        //Test for numbers
+        Pattern numberPattern = Pattern.compile("[0-9]");
+        char[] currentWordArray = currentWord.toCharArray();
+        if (charMatchPattern(numberPattern, currentWordArray)) {
+            return false;
+        }
+
+        char[] possibleAnagramArray = possibleAnagram.toCharArray();
+
+        if (charMatchPattern(numberPattern, possibleAnagramArray)) {
+            return false;
+        }
+
+        //Test for symbols
+        Pattern symbolPattern = Pattern.compile("[-+.^:,!@#%$^&*()_={};<>?/]");
+        if (charMatchPattern(symbolPattern, currentWordArray)) {
+            return false;
+        }
+
+        if (charMatchPattern(symbolPattern, possibleAnagramArray)) {
+            return false;
+        }
+        //
 
         currentWord = currentWord.toLowerCase();
         possibleAnagram = possibleAnagram.toLowerCase();
@@ -41,74 +65,19 @@ public class AnagramService {
         return Arrays.equals(lettersOfWord, lettersOfPossibleAnagram);
     }
 
-    private boolean notAnagram(String currentWord, String possibleAnagram) {
-        //If length does not match there are no way this is a anagram.
-        if(currentWord.length() != possibleAnagram.length()) {
-            return true;
-        }
-
-        //Test for numbers
-        String numbers = "0123456789";
-        char[] numbersArray = numbers.toCharArray();
-        List<String> lettersWordArray = new ArrayList<>();
-
-        extractLettersToList(currentWord, lettersWordArray);
-
-        if (checkValueInArray(lettersWordArray, numbersArray)) {
-            return true;
-        }
-
-        char[] possibleAnagramArray = possibleAnagram.toCharArray();
-
-        List<String> lettersPossibleAnagramArray = new ArrayList<>();
-        extractLettersToList(possibleAnagram, lettersPossibleAnagramArray);
-
-        if (checkValueInArray(lettersPossibleAnagramArray, numbersArray)) {
-            return true;
-        }
-
-        //Test for symbols
-        Pattern symbolPattern = Pattern.compile("[-+.^:,!@#%$^&*()_={};<>?/]");
-        char[] currentWordArray = currentWord.toCharArray();
-
-        if (charMatchPattern(symbolPattern, currentWordArray)) {
-            return true;
-        }
-
-        if (charMatchPattern(symbolPattern, possibleAnagramArray)) {
-            return true;
-        }
-        //
-        return false;
-    }
-
     private boolean sanityCheck(String currentWord, String possibleAnagram) {
         //Sanity check for null and so on.
-        if(Strings.isNullOrEmpty(currentWord)) {
+        if(currentWord == null || currentWord.isBlank()) {
             return true;
         }
-        if(Strings.isNullOrEmpty(possibleAnagram)) {
+        if(possibleAnagram == null || possibleAnagram.isBlank()) {
             return true;
         }
         //
         return false;
     }
 
-    private void extractLettersToList(String currentWord, List<String> lettersWordArray) {
-        for(char currentLetter:currentWord.toCharArray()) {
-            lettersWordArray.add(currentLetter + "");
-        }
-    }
-
-    private boolean checkValueInArray(List<String> currentWord, char[] numbersArray) {
-        for(char currentNumber:numbersArray) {
-            if(currentWord.contains(currentNumber + "")) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    //Using regex patterns to determine if we find a match for thing. Starting with numbers and symbols but quite generic.
     private boolean charMatchPattern(Pattern pattern, char[] currentWordArray) {
         for(char currentChar:currentWordArray) {
             Matcher currentCharNumbersMatcher = pattern.matcher(currentChar + "");

@@ -73,7 +73,11 @@ class AnagramServiceTest {
         assertFalse(response);
     }
 
-
+    @Test
+    void areAnagramSpacesOnlyShouldBeFalse() {
+        boolean response = anagramService.areAnagram("     ", "     ");
+        assertFalse(response);
+    }
 
     //
     @Test
